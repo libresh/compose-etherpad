@@ -1,0 +1,18 @@
+db:
+  image: mysql
+  environment:
+    - MYSQL_ROOT_PASSWORD=password
+  volumes:
+    - data/mysql:/var/lib/mysql
+    - data/dump:/dump
+web:
+  image: indiepaas/etherpad
+  environment:
+    - ETHERPAD_ADMIN_PASSWORD=password
+    - ETHERPAD_ADMIN_USER=pierre@ozoux.net 
+    - ETHERPAD_PORT=80
+  volumes:
+    - data/settings:/opt/etherpad-lite/var
+  links:
+    - db:mysql
+
