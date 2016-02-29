@@ -3,7 +3,7 @@ db:
   environment:
     - MYSQL_ROOT_PASSWORD
   volumes:
-    - data/mysql:/var/lib/mysql
+    - ./data/mysql:/var/lib/mysql
 web:
   image: indiehosters/etherpad
   environment:
@@ -11,6 +11,6 @@ web:
     - ETHERPAD_ADMIN_USER=pierre@ozoux.net 
     - ETHERPAD_PORT=80
   volumes:
-    - data/settings:/opt/etherpad-lite/var
+    - ./data/settings:/opt/etherpad-lite/var
   links:
     - db:mysql
